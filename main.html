@@ -1,16 +1,81 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person, Student, and Teacher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <h1>Person, Student, and Teacher Example</h1>
+    <button onclick="testPerson()">Test Person</button>
+    <button onclick="testStudent()">Test Student</button>
+    <button onclick="testTeacher()">Test Teacher</button>
+    
+    <script>
+        class Person {
+            constructor(name, age) {
+                this._name = name;
+                this._age = age;
+            }
+            
+            get name() {
+                return this._name;
+            }
+            
+            get age() {
+                return this._age;
+            }
+            
+            set age(newAge) {
+                this._age = newAge;
+            }
+        }
 
+        class Student extends Person {
+            study() {
+                console.log(`${this.name} is studying`);
+                alert(`${this.name} is studying`);
+            }
+        }
+
+        class Teacher extends Person {
+            teach() {
+                console.log(`${this.name} is teaching`);
+                alert(`${this.name} is teaching`);
+            }
+        }
+
+        function testPerson() {
+            const person = new Person("John", 25);
+            console.log(person.name);
+            alert(`Person Name: ${person.name}`);
+            person.age = 30;
+            console.log(person.age);
+            alert(`Updated Age: ${person.age}`);
+        }
+
+        function testStudent() {
+            const student = new Student("Alice", 22);
+            student.study();
+        }
+
+        function testTeacher() {
+            const teacher = new Teacher("Bob", 40);
+            teacher.teach();
+        }
+    </script>
 </body>
-
 </html>
