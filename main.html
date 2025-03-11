@@ -14,65 +14,57 @@
             margin: 10px;
             padding: 10px;
             font-size: 16px;
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <h1>Person, Student, and Teacher Example</h1>
-    <button onclick="testPerson()">Test Person</button>
-    <button onclick="testStudent()">Test Student</button>
-    <button onclick="testTeacher()">Test Teacher</button>
-    
+    <button onclick="createPerson()">Create Person</button>
+    <button onclick="createStudent()">Create Student</button>
+    <button onclick="createTeacher()">Create Teacher</button>
+    <p id="output"></p>
+
     <script>
         class Person {
             constructor(name, age) {
                 this._name = name;
                 this._age = age;
             }
-            
             get name() {
                 return this._name;
             }
-            
+            set age(age) {
+                this._age = age;
+            }
             get age() {
                 return this._age;
-            }
-            
-            set age(newAge) {
-                this._age = newAge;
             }
         }
 
         class Student extends Person {
             study() {
-                console.log(`${this.name} is studying`);
-                alert(`${this.name} is studying`);
+                document.getElementById("output").innerText = `${this.name} is studying`;
             }
         }
 
         class Teacher extends Person {
             teach() {
-                console.log(`${this.name} is teaching`);
-                alert(`${this.name} is teaching`);
+                document.getElementById("output").innerText = `${this.name} is teaching`;
             }
         }
 
-        function testPerson() {
+        function createPerson() {
             const person = new Person("John", 25);
-            console.log(person.name);
-            alert(`Person Name: ${person.name}`);
+            document.getElementById("output").innerText = `Created Person: ${person.name}, Age: ${person.age}`;
             person.age = 30;
-            console.log(person.age);
-            alert(`Updated Age: ${person.age}`);
         }
 
-        function testStudent() {
+        function createStudent() {
             const student = new Student("Alice", 22);
             student.study();
         }
 
-        function testTeacher() {
+        function createTeacher() {
             const teacher = new Teacher("Bob", 40);
             teacher.teach();
         }
