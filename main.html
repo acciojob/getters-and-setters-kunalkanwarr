@@ -3,48 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Person, Student, and Teacher</title>
+    <title>Person, Student, Teacher</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
         button {
-            margin: 10px;
+            margin-top: 10px;
             padding: 10px;
-            font-size: 16px;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
-    <script type="module">
-        import { Person, Student, Teacher } from './classes.js';
-
-        function createPerson() {
-            const person = new Person("John", 25);
-            document.getElementById("output").innerText = `Created Person: ${person.name}, Age: ${person.age}`;
-            person.age = 30;
-        }
-
-        function createStudent() {
-            const student = new Student("Alice", 22);
-            document.getElementById("output").innerText = student.study();
-        }
-
-        function createTeacher() {
-            const teacher = new Teacher("Bob", 40);
-            document.getElementById("output").innerText = teacher.teach();
-        }
-
-        window.createPerson = createPerson;
-        window.createStudent = createStudent;
-        window.createTeacher = createTeacher;
-    </script>
 </head>
 <body>
-    <h1>Person, Student, and Teacher Example</h1>
-    <button onclick="createPerson()">Create Person</button>
-    <button onclick="createStudent()">Create Student</button>
-    <button onclick="createTeacher()">Create Teacher</button>
-    <p id="output"></p>
+    <div class="container">
+        <h2>Person, Student, Teacher</h2>
+        <button onclick="testClasses()">Run Test Cases</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        class Person {
+            constructor(name, age) {
+                this._name = name;
+                this._age = age;
+            }
+
+            get name() {
+                return this._name;
+            }
+
+            get age() {
+                return this._age;
+            }
+
+            set age(newAge) {
+                this._age = newAge;
+            }
+        }
+
+        class Student extends Person {
+            study() {
+                logOutput(`${this.name} is studying`);
+            }
+        }
+
+        class Teacher extends Person {
+            teach() {
+                logOutput(`${this.name} is teaching`);
+            }
+        }
+
+        function logOutput(message) {
+            const outputDiv = document.getElementById("output");
+            const p = document.createElement("p");
+            p.textContent = message;
+            outputDiv.appendChild(p);
+        }
+
+        function testClasses() {
+            document.getElementById("output").innerHTML = ""; // Clear output
+            
+            const person = new Person("John", 25);
+            logOutput(`Person Name: ${person.name}`);
+            person.age = 30;
+            logOutput(`Updated Age: ${person.age}`);
+
+            const student = new Student("Alice", 22);
+            student.study();
+
+            const teacher = new Teacher("Bob", 40);
+            teacher.teach();
+        }
+    </script>
 </body>
 </html>
