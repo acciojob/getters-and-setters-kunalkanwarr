@@ -63,13 +63,13 @@
 
         class Student extends Person {
             study() {
-                logOutput(`${this.name} is studying`);
+                return `${this.name} is studying`;
             }
         }
 
         class Teacher extends Person {
             teach() {
-                logOutput(`${this.name} is teaching`);
+                return `${this.name} is teaching`;
             }
         }
 
@@ -89,10 +89,10 @@
             logOutput(`Updated Age: ${person.age}`);
 
             const student = new Student("Alice", 22);
-            student.study();
+            logOutput(student.study());
 
             const teacher = new Teacher("Bob", 40);
-            teacher.teach();
+            logOutput(teacher.teach());
         }
     </script>
 </body>
