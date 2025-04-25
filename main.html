@@ -1,99 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Person, Student, Teacher</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        button {
-            margin-top: 10px;
-            padding: 10px;
-            width: 100%;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+	<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div class="container">
-        <h2>Person, Student, Teacher</h2>
-        <button onclick="testClasses()">Run Test Cases</button>
-        <div id="output"></div>
-    </div>
+	<!-- the entire body must be written by student -->
+    <script type="text/javascript" src="./script.js">
+</script>
 
-    <script>
-        class Person {
-            constructor(name, age) {
-                this._name = name;
-                this._age = age;
-            }
-
-            get name() {
-                return this._name;
-            }
-
-            get age() {
-                return this._age;
-            }
-
-            set age(newAge) {
-                this._age = newAge;
-            }
-        }
-
-        class Student extends Person {
-            study() {
-                return `${this.name} is studying`;
-            }
-        }
-
-        class Teacher extends Person {
-            teach() {
-                return `${this.name} is teaching`;
-            }
-        }
-
-        function logOutput(message) {
-            const outputDiv = document.getElementById("output");
-            const p = document.createElement("p");
-            p.textContent = message;
-            outputDiv.appendChild(p);
-        }
-
-        function testClasses() {
-            document.getElementById("output").innerHTML = ""; // Clear output
-            
-            const person = new Person("John", 25);
-            logOutput(`Person Name: ${person.name}`);
-            person.age = 30;
-            logOutput(`Updated Age: ${person.age}`);
-
-            const student = new Student("Alice", 22);
-            logOutput(student.study());
-
-            const teacher = new Teacher("Bob", 40);
-            logOutput(teacher.teach());
-        }
-    </script>
 </body>
+
 </html>
